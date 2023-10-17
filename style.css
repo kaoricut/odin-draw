@@ -29,14 +29,22 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 32px;
+  flex-direction: column;
+  gap: 16px;
+  padding: 16px;
   flex-grow: 1;
 }
 
 .canvas {
+  display: grid;
+  grid-template-columns: repeat(16, 1fr);
   width: 600px;
   height: 600px;
   background-color: #ffffff;
+}
+
+.canvas__cell {
+  box-shadow: inset 1px 1px rgba(224, 224, 226, 0.7);
 }
 
 .footer {
