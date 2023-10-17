@@ -1,15 +1,11 @@
-document.addEventListener("DOMContentLoaded", createCanvasGrid, { once: true });
+const DEFAULT_GRID = 16;
 
-const changeGridBtn = document.querySelector(".js-change-grid-btn");
-changeGridBtn.addEventListener("click", createCanvasGrid);
+document.addEventListener("DOMContentLoaded", createCanvasGrid);
 
 function createCanvasGrid() {
   const canvasElement = document.querySelector(".canvas");
-  const canvasGrid = getCurrentGrid();
 
-  canvasElement.style.cssText = `grid-template-columns: repeat(${canvasGrid}, 1fr)`;
-
-  for (let i = 1; i <= canvasGrid ** 2; i++) {
+  for (let i = 1; i <= DEFAULT_GRID ** 2; i++) {
     const newCell = document.createElement("div");
     newCell.classList.add("canvas__cell");
     canvasElement.appendChild(newCell);
@@ -19,24 +15,15 @@ function createCanvasGrid() {
 }
 
 function drawOnCanvas() {
-  let isMousePressed;
-  const currentColor = "#000"
+  let isMouseDown;
   const canvasCells = document.querySelectorAll(".canvas__cell");
 
-  document.addEventListener("mousedown", () => isMousePressed = true);
-  document.addEventListener("mouseup", () => isMousePressed = false);
+  window.addEventListener("mousedown", () => isMouseDown = true);
+  window.addEventListener("mouseup", () => isMouseDown = false);
 
   canvasCells.forEach(cell => {
-    cell.addEventListener("mouseover", (e) => {
-
-      if (!isMousePressed) return;
-
-      e.target.style.cssText = `background-color: ${currentColor}`;
-    });
+    cell.addEventListener("mouseover", () => {
+      if (isMouseDown) cell.style.cssText = "background-color: black";
+    })
   });
-}
-
-function getCurrentGrid() {
-  const userGrid = +prompt("Please create a grid");
-  return userGrid;
 }
