@@ -5,14 +5,21 @@ document.addEventListener("DOMContentLoaded", createCanvasGrid, { once: true });
 
 const changeGridBtn = document.querySelector(".js-change-grid");
 changeGridBtn.addEventListener("click", () => {
-  const newGridSize = +prompt("Enter the grid size");
+  let newGridSize = +prompt("Enter the grid size", 16);
+  
+  if (!newGridSize || newGridSize < 16) {
+    newGridSize = 16;
+  } else if (newGridSize > 128) {
+    newGridSize = 128;
+  }
+
   currentGrid = newGridSize;
   createCanvasGrid();
 });
 
 function createCanvasGrid() {
   const canvasElement = document.querySelector(".canvas");
-  
+
   refreshCanvas();
 
   canvasElement.style.cssText = `grid-template-columns: repeat(${currentGrid}, 1fr)`;
