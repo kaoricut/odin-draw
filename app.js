@@ -1,11 +1,23 @@
 const DEFAULT_GRID = 16;
+let currentGrid = DEFAULT_GRID;
 
-document.addEventListener("DOMContentLoaded", createCanvasGrid);
+document.addEventListener("DOMContentLoaded", createCanvasGrid, { once: true });
+
+const changeGridBtn = document.querySelector(".js-change-grid");
+changeGridBtn.addEventListener("click", () => {
+  const newGridSize = +prompt("Enter the grid size");
+  currentGrid = newGridSize;
+  createCanvasGrid();
+});
 
 function createCanvasGrid() {
   const canvasElement = document.querySelector(".canvas");
+  
+  refreshCanvas();
 
-  for (let i = 1; i <= DEFAULT_GRID ** 2; i++) {
+  canvasElement.style.cssText = `grid-template-columns: repeat(${currentGrid}, 1fr)`;
+
+  for (let i = 1; i <= currentGrid ** 2; i++) {
     const newCell = document.createElement("div");
     newCell.classList.add("canvas__cell");
     canvasElement.appendChild(newCell);
@@ -26,4 +38,9 @@ function drawOnCanvas() {
       if (isMouseDown) cell.style.cssText = "background-color: black";
     })
   });
+}
+
+function refreshCanvas() {
+  const canvasElement = document.querySelector(".canvas");
+  canvasElement.innerHTML = "";
 }
