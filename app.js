@@ -4,6 +4,8 @@ let currentGrid = DEFAULT_GRID;
 const DEFAULT_MODE = "default";
 let currentMode = DEFAULT_MODE;
 
+let baseNoirColor = [255, 255, 255];
+
 document.addEventListener("DOMContentLoaded", createCanvasGrid, { once: true });
 document.addEventListener("DOMContentLoaded", setCurrentModeUI, { once: true });
 
@@ -79,6 +81,20 @@ function getCurrentColor() {
       const colorPickerElement = document.querySelector(".js-color-picker");
       return colorPickerElement.value;
     case "random":
-      return `rgb(${Math.floor(Math.random() * 256)}, ${Math.floor(Math.random() * 256)}, ${Math.floor(Math.random() * 256)})`;
+      return `rgb(${generateRandomColor()}, ${generateRandomColor()}, ${generateRandomColor()})`;
+    case "noir":
+      const baseNoirIncrement = 255 / 10; // Interactions until black color
+
+      if (baseNoirColor[0] === 0) {
+        baseNoirColor = [255, 255, 255];
+      }
+
+      baseNoirColor = baseNoirColor.map(item => item - baseNoirIncrement);
+      const currentNoirColor = baseNoirColor;
+      return `rgb(${[...currentNoirColor]})`;
   }
+}
+
+function generateRandomColor() {
+  return Math.floor(Math.random() * 256);
 }
