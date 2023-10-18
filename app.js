@@ -1,4 +1,5 @@
 const DEFAULT_GRID = 16;
+const DEFAULT_MODE = "default";
 let currentGrid = DEFAULT_GRID;
 
 document.addEventListener("DOMContentLoaded", createCanvasGrid, { once: true });
@@ -42,7 +43,7 @@ function drawOnCanvas() {
 
   canvasCells.forEach(cell => {
     cell.addEventListener("mouseover", () => {
-      if (isMouseDown) cell.style.cssText = "background-color: black";
+      if (isMouseDown) cell.style.cssText = `background-color: ${getCurrentColor()}`;
     })
   });
 }
@@ -50,4 +51,9 @@ function drawOnCanvas() {
 function refreshCanvas() {
   const canvasElement = document.querySelector(".canvas");
   canvasElement.innerHTML = "";
+}
+
+function getCurrentColor() {
+  const colorPickerElement = document.querySelector(".js-color-picker");
+  return colorPickerElement.value;
 }

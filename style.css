@@ -65,6 +65,11 @@ body {
   color: #2E282A;
 }
 
+.mode__btn_current {
+  background: #0B6E4F;
+  color: #E0E0E2;
+}
+
 .range__wrapper {
   display: flex;
   flex-direction: column;
