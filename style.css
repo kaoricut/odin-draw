@@ -1,0 +1,134 @@
+html {
+  box-sizing: border-box;
+}
+
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: inherit;
+}
+
+body {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  font-family: "Inter", sans-serif;
+  line-height: 1;
+  background-color: #E0E0E2;
+  color: #2E282A;
+}
+
+.container {
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.main {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  padding: 16px;
+  flex-grow: 1;
+}
+
+.aside__modes {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-bottom: 40px;
+}
+
+.mode__btn {
+  padding: 12px 30px;
+  font-family: inherit;
+  font-size: 16px;
+  color: #E0E0E2;
+  background: #2E282A;
+  border: 0;
+  border-radius: 14px;
+  transition: all .3s ease-out;
+  cursor: pointer;
+}
+
+.mode__btn:hover {
+  transform: scale(1.1);
+  background: #E7CFBC;
+  color: #2E282A;
+}
+
+.mode__btn:active {
+  transform: scale(0.9);
+  background: #E7CFBC;
+  color: #2E282A;
+}
+
+.mode__btn_current {
+  background: #0B6E4F;
+  color: #E0E0E2;
+}
+
+.range__wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+}
+
+.canvas {
+  display: grid;
+  grid-template-columns: repeat(16, 1fr);
+  width: 600px;
+  height: 600px;
+  background-color: #ffffff;
+}
+
+.canvas__cell {
+  box-shadow: inset 1px 1px rgba(224, 224, 226, 0.7);
+}
+
+.footer {
+  padding: 16px;
+  font-size: 16px;
+  background-color: #2E282A;
+  color: #E0E0E2;
+}
+
+.footer__text {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+}
+
+.footer__link:link,
+.footer__link:visited {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  color: inherit;
+  text-decoration: none;
+}
+
+.footer__link:link,
+.footer__link:visited {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  color: inherit;
+  text-decoration: none;
+  transition: all .2s;
+}
+
+.footer__link:hover,
+.footer__link:active {
+  color: #0B6E4F;
+  text-decoration: underline;
+}
+
+
+.footer__logo {
+  width: 42px;
+}
