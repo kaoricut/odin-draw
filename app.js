@@ -3,19 +3,19 @@ let currentGrid = DEFAULT_GRID;
 
 document.addEventListener("DOMContentLoaded", createCanvasGrid, { once: true });
 
-const changeGridBtn = document.querySelector(".js-change-grid");
-changeGridBtn.addEventListener("click", () => {
-  let newGridSize = +prompt("Enter the grid size", 16);
-  
-  if (!newGridSize || newGridSize < 16) {
-    newGridSize = 16;
-  } else if (newGridSize > 128) {
-    newGridSize = 128;
-  }
+const changeGridElement = document.querySelector(".js-change-grid");
+changeGridElement.addEventListener("change", (event) => {
+  newGridSize = event.target.value;
+  updateRangeUI(newGridSize);
 
-  currentGrid = newGridSize;
+  currentGrid = +newGridSize;
   createCanvasGrid();
 });
+
+function updateRangeUI(newValue) {
+  const currentSizeUI = document.querySelector(".range__grid-size");
+  currentSizeUI.textContent = `${newValue} x ${newValue}`;
+}
 
 function createCanvasGrid() {
   const canvasElement = document.querySelector(".canvas");

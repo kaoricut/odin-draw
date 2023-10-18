@@ -11,7 +11,17 @@
 </head>
 <body>
   <main class="main">
-    <button class="main__button js-change-grid">Change grid</button>
+    <aside class="aside main__aside">
+      <div class="aside__modes js-modes-control">
+        <button class="mode__btn">Default</button>
+        <button class="mode__btn">Random</button>
+        <button class="mode__btn">Noir</button>
+      </div>
+      <label for="range" class="range__wrapper">
+        <input type="range" name="range" class="range main__range js-change-grid" min="16" max="128" value="16"></input>
+        <span class="range__grid-size">16 x 16</span>
+      </label>
+    </aside>
     <div class="canvas"></div>
   </main>
   <footer class="footer">
