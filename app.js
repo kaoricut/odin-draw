@@ -74,6 +74,11 @@ function refreshCanvas() {
 }
 
 function getCurrentColor() {
-  const colorPickerElement = document.querySelector(".js-color-picker");
-  return colorPickerElement.value;
+  switch (currentMode) {
+    case "default":
+      const colorPickerElement = document.querySelector(".js-color-picker");
+      return colorPickerElement.value;
+    case "random":
+      return `rgb(${Math.floor(Math.random() * 256)}, ${Math.floor(Math.random() * 256)}, ${Math.floor(Math.random() * 256)})`;
+  }
 }
