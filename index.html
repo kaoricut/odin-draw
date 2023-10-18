@@ -12,11 +12,11 @@
 <body>
   <main class="main">
     <aside class="aside main__aside">
-      <div class="aside__modes js-modes-control">
+      <div class="aside__modes">
         <input type="color" class="color-picker js-color-picker">
-        <button class="mode__btn mode__btn_current">Default</button>
-        <button class="mode__btn">Random</button>
-        <button class="mode__btn">Noir</button>
+        <button class="mode__btn js-mode" data-mode="default">Default</button>
+        <button class="mode__btn js-mode" data-mode="random">Random</button>
+        <button class="mode__btn js-mode" data-mode="noir">Noir</button>
       </div>
       <label for="range" class="range__wrapper">
         <input type="range" name="range" class="range main__range js-change-grid" min="16" max="128" value="16" step="8"></input>

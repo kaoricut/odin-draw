@@ -1,8 +1,28 @@
 const DEFAULT_GRID = 16;
-const DEFAULT_MODE = "default";
 let currentGrid = DEFAULT_GRID;
 
+const DEFAULT_MODE = "default";
+let currentMode = DEFAULT_MODE;
+
 document.addEventListener("DOMContentLoaded", createCanvasGrid, { once: true });
+document.addEventListener("DOMContentLoaded", setCurrentModeUI, { once: true });
+
+const modeControls = document.querySelectorAll(".js-mode");
+modeControls.forEach(button => {
+  button.addEventListener("click", changeCurrentMode);
+});
+
+function setCurrentModeUI() {
+  modeControls.forEach(button => {
+    button.classList.remove("mode__btn_current");
+    if (button.dataset.mode === currentMode) button.classList.toggle("mode__btn_current");
+  });
+}
+
+function changeCurrentMode(event) {
+  currentMode = event.target.dataset.mode;
+  setCurrentModeUI();
+}
 
 const changeGridElement = document.querySelector(".js-change-grid");
 changeGridElement.addEventListener("change", (event) => {
